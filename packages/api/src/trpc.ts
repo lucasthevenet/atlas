@@ -48,7 +48,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (_: FetchCreateContextFnOptions) => {
+export const createTRPCContext = async (_?: FetchCreateContextFnOptions) => {
   // Get the session from the server using the unstable_getServerSession wrapper function
   const session = await getServerSession();
 

@@ -32,7 +32,6 @@ export const clientCallTypeToProcedureType = (
 
 export function createTRPCNextAppRouter<TRouter extends AnyRouter>(config: {
   router: TRouter;
-
   createContext: () => MaybePromise<inferRouterContext<TRouter>>;
 }) {
   return createRecursiveProxy(async (opts) => {

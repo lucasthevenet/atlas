@@ -1,6 +1,6 @@
 {
   "name": "@trpc/next-app-router",
-  "version": "0.1.0",
+  "version": "10.25.0",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -9,9 +9,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@trpc/client": "^10.25.0",
-    "@trpc/server": "^10.25.0",
-    "next": "13.4.1",
+    "@trpc/client": "^10.25.1",
+    "@trpc/server": "^10.25.1",
+    "next": "13.4.2",
     "superjson": "1.12.3",
     "zod": "^3.21.4"
   },

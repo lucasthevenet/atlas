@@ -2,11 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js",
+      "name": "Web",
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm dev",
-      "cwd": "${workspaceFolder}/apps/nextjs/",
+      "cwd": "${workspaceFolder}/apps/web/",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Desktop",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm dev",
+      "cwd": "${workspaceFolder}/apps/desktop/",
       "skipFiles": ["<node_internals>/**"]
     }
   ]
