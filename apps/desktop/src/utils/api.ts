@@ -2,15 +2,24 @@
 
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { experimental_createTRPCNextAppDirClient } from "@trpc/next/app-dir/client";
+import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
 
-import { getUrl, transformer } from "./shared";
+function getBaseUrl() {
+  if (typeof window !== "undefined") return "";
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
+}
+
+export function getUrl() {
+  return getBaseUrl() + "/api/trpc";
+}
 
 export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   config() {
     return {
-      transformer,
+      transformer: superjson,
       links: [
         loggerLink({
           enabled: (op) =>

@@ -67,9 +67,6 @@ importers:
       '@trpc/server':
         specifier: ^10.26.0
         version: 10.26.0
-      api:
-        specifier: link:./src/trpc
-        version: link:src/trpc
       lucide-react:
         specifier: ^0.216.0
         version: 0.216.0(react@18.2.0)
@@ -337,34 +334,6 @@ importers:
       prisma:
         specifier: ^4.14.0
         version: 4.14.0
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-
-  packages/next-app-router:
-    dependencies:
-      '@trpc/client':
-        specifier: ^10.26.0
-        version: 10.26.0(@trpc/server@10.26.0)
-      '@trpc/server':
-        specifier: ^10.26.0
-        version: 10.26.0
-      next:
-        specifier: ^13.4.2
-        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
-      superjson:
-        specifier: 1.12.3
-        version: 1.12.3
-      zod:
-        specifier: ^3.21.4
-        version: 3.21.4
-    devDependencies:
-      '@acme/eslint-config':
-        specifier: ^0.1.0
-        version: link:../config/eslint
-      eslint:
-        specifier: ^8.40.0
-        version: 8.40.0
       typescript:
         specifier: ^5.0.4
         version: 5.0.4

@@ -5,5 +5,4 @@ packages:
   - packages/auth
   - packages/db
   - packages/ui
-  - packages/next-app-router
   - packages/config/*
