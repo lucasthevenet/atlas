@@ -1,7 +1,7 @@
 {
   "$schema": "../../../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "pnpm with-env next build && next export",
+    "beforeBuildCommand": "pnpm with-env next build",
     "beforeDevCommand": "pnpm with-env next dev -p 5585",
     "devPath": "http://localhost:5585",
     "distDir": "../out"

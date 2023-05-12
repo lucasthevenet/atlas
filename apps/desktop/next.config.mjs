@@ -6,6 +6,9 @@ import "@acme/auth/env.mjs";
 const config = {
   reactStrictMode: true,
   output: "export",
+  images: {
+    unoptimized: true
+  },
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/api", "@acme/auth", "@acme/db"],
   /** We already do linting and typechecking as separate tasks in CI */

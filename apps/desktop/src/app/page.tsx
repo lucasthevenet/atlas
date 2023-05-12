@@ -17,29 +17,13 @@ export const metadata: Metadata = {
   title: "Music App",
   description: "Example music app using the components.",
 };
+
 export default function HomePage() {
   return (
     <main>
-      <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden md:block">
         <Menu />
         <div className="border-t">
-          <div className="bg-background">
+          <div className="bg-white dark:bg-gray-950">
             <div className="grid lg:grid-cols-5">
               <Sidebar playlists={playlists} className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
@@ -71,7 +55,7 @@ export default function HomePage() {
                           <h2 className="text-2xl font-semibold tracking-tight">
                             Listen Now
                           </h2>
-                          <p className="text-muted-foreground text-sm">
+                          <p className="text-slate-500 dark:text-slate-500 text-sm">
                             Top picks for you. Updated daily.
                           </p>
                         </div>
@@ -98,7 +82,7 @@ export default function HomePage() {
                         <h2 className="text-2xl font-semibold tracking-tight">
                           Made for You
                         </h2>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-slate-500 dark:text-slate-500 text-sm">
                           Your personal playlists. Updated daily.
                         </p>
                       </div>
@@ -130,7 +114,7 @@ export default function HomePage() {
                           <h2 className="text-2xl font-semibold tracking-tight">
                             New Episodes
                           </h2>
-                          <p className="text-muted-foreground text-sm">
+                          <p className="text-slate-500 dark:text-slate-500 text-sm">
                             Your favorite podcasts. Updated daily.
                           </p>
                         </div>
@@ -144,7 +128,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </div>
     </main>
   );
 }
