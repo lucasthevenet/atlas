@@ -1,5 +1,5 @@
 import "~/styles/globals.css";
-import { cn } from "@acme/ui/src/utils";
+import { cn } from "@acme/ui/utils";
 
 import { fontSans } from "~/styles/fonts";
 import { ClientProviders } from "./client-providers";

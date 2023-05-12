@@ -9,9 +9,9 @@ import {
   User,
 } from "lucide-react";
 
-import { Button } from "@acme/ui/src/button";
-import { ScrollArea } from "@acme/ui/src/scroll-area";
-import { cn } from "@acme/ui/src/utils";
+import { Button } from "@acme/ui/components/button";
+import { ScrollArea } from "@acme/ui/components/scroll-area";
+import { cn } from "@acme/ui/utils";
 
 import { type Playlist } from "../data/playlists";
 

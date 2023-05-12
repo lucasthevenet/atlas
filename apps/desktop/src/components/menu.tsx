@@ -15,7 +15,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@acme/ui/src/menubar";
+} from "@acme/ui/components/menubar";
 
 export function Menu() {
   return (

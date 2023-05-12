@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { PlusCircle } from "lucide-react";
 
-import { Button } from "@acme/ui/src/button";
-import { ScrollArea, ScrollBar } from "@acme/ui/src/scroll-area";
-import { Separator } from "@acme/ui/src/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/src/tabs";
+import { Button } from "@acme/ui/components/button";
+import { ScrollArea, ScrollBar } from "@acme/ui/components/scroll-area";
+import { Separator } from "@acme/ui/components/separator";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@acme/ui/components/tabs";
 
 import { AlbumArtwork } from "~/components/album-artwork";
 import { Menu } from "~/components/menu";
