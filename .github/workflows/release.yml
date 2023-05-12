@@ -1,25 +1,22 @@
-name: CI
-
+name: Release
 on:
-  pull_request:
-    branches: ["*"]
   push:
-    branches: ["main"]
-  merge_group:
+    tags:
+      - "v*"
+  workflow_dispatch:
 
-# You can leverage Vercel Remote Caching with Turbo to speed up your builds
-# @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  build-lint:
+  release:
+    permissions:
+      contents: write
     strategy:
+      fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-latest, windows-latest]
-    env:
-      DATABASE_URL: file:./db.sqlite
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -39,7 +36,7 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
-          workspaces: "./apps/desktop/src-tauri -> target"
+          workspaces: "./src-tauri -> target"
 
       - name: Setup Node 20
         uses: actions/setup-node@v3
@@ -70,13 +67,15 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install
 
-      # Normally, this would be done as part of the turbo pipeline - however since the Expo app doesn't depend on `@acme/db` it doesn't care.
-      # TODO: Free for all to find a better solution here.
-      - name: Generate Prisma Client
-        run: pnpm turbo db:generate
+      - name: Build the app
+        uses: tauri-apps/tauri-action@v0
 
-      - name: lint and type-check
-        run: pnpm turbo lint type-check
-
-      - name: Check workspaces
-        run: pnpm manypkg check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: "./apps/desktop"
+          tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
+          releaseName: "Atlas v__VERSION__" # tauri-action replaces \_\_VERSION\_\_ with the app version.
+          releaseBody: "See the assets to download and install this version."
+          releaseDraft: true
+          prerelease: false
