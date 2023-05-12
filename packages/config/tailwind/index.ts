@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
-import { fontFamily } from 'tailwindcss/defaultTheme';
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   content: [""],
-   theme: {
+  theme: {
     container: {
       center: true,
       padding: "2rem",

@@ -17,9 +17,9 @@ export function PodcastEmptyPlaceholder() {
   return (
     <div className="flex h-[450px] shrink-0 items-center justify-center rounded-md border border-dashed">
       <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
-        <Podcast className="text-slate-500 dark:text-slate-500 h-10 w-10" />
+        <Podcast className="h-10 w-10 text-slate-500 dark:text-slate-500" />
         <h3 className="mt-4 text-lg font-semibold">No episodes added</h3>
-        <p className="text-slate-500 dark:text-slate-500 mb-4 mt-2 text-sm">
+        <p className="mb-4 mt-2 text-sm text-slate-500 dark:text-slate-500">
           You have not added any podcasts. Add one below.
         </p>
         <Dialog>

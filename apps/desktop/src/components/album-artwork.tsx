@@ -76,7 +76,9 @@ export function AlbumArtwork({
       </ContextMenu>
       <div className="space-y-1 text-sm">
         <h3 className="font-medium leading-none">{album.name}</h3>
-        <p className="text-slate-500 dark:text-slate-500 text-xs">{album.artist}</p>
+        <p className="text-xs text-slate-500 dark:text-slate-500">
+          {album.artist}
+        </p>
       </div>
     </div>
   );
