@@ -1,7 +1,8 @@
 import "~/styles/globals.css";
-import { fontSans} from '~/styles/fonts'
-import { ClientProviders } from "./client-providers";
 import { cn } from "@acme/ui/src/utils";
+
+import { fontSans } from "~/styles/fonts";
+import { ClientProviders } from "./client-providers";
 
 export default function RootLayout({
   children,
@@ -12,9 +13,10 @@ export default function RootLayout({
     <html>
       <body
         className={cn(
-            "min-h-screen bg-white dark:bg-gray-950 font-sans antialiased",
-            fontSans.variable
-          )}>
+          "min-h-screen bg-white font-sans antialiased dark:bg-slate-950",
+          fontSans.variable,
+        )}
+      >
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
