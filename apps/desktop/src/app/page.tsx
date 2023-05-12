@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { ScrollArea, ScrollBar } from "@acme/ui/src/scroll-area";
 import { Separator } from "@acme/ui/src/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/src/tabs";
