@@ -4,7 +4,6 @@ import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { cn } from "../utils";
-import { buttonVariants } from "./button";
 
 const AlertDialog = AlertDialogPrimitive.Root;
 
@@ -29,7 +28,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-white/80 backdrop-blur-sm transition-opacity animate-in fade-in dark:bg-slate-950/80",
+      "fixed inset-0 z-50 bg-white/80 backdrop-blur-sm transition-opacity animate-in fade-in dark:bg-gray-950/80",
       className,
     )}
     {...props}
@@ -47,7 +46,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-white p-6 opacity-100 shadow-lg animate-in fade-in-90 slide-in-from-bottom-10 dark:bg-slate-950 sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
+        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-white p-6 opacity-100 shadow-lg animate-in fade-in-90 slide-in-from-bottom-10 dark:bg-gray-950 sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
         className,
       )}
       {...props}
@@ -102,7 +101,7 @@ const AlertDialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-slate-500 dark:text-slate-500", className)}
+    className={cn("text-sm text-gray-500 dark:text-gray-500", className)}
     {...props}
   />
 ));
@@ -115,7 +114,10 @@ const AlertDialogAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(buttonVariants(), className)}
+    className={cn(
+      "inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 ring-offset-white transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:ring-offset-gray-950 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-800",
+      className,
+    )}
     {...props}
   />
 ));
@@ -128,7 +130,7 @@ const AlertDialogCancel = React.forwardRef<
   <AlertDialogPrimitive.Cancel
     ref={ref}
     className={cn(
-      buttonVariants({ variant: "outline" }),
+      "inline-flex h-10 items-center justify-center rounded-md border border-gray-200 px-4 py-2 text-sm font-medium ring-offset-white transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:ring-offset-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-800",
       "mt-2 sm:mt-0",
       className,
     )}

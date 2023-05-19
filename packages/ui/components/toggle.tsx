@@ -7,13 +7,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
 const toggleVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors data-[state=on]:bg-slate-100 dark:data-[state=on]:bg-slate-800 data-[state=on]:text-slate-900 dark:data-[state=on]:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-800 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-white dark:ring-offset-slate-950 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-500 dark:hover:text-slate-500",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors data-[state=on]:bg-gray-100 dark:data-[state=on]:bg-gray-800 data-[state=on]:text-gray-900 dark:data-[state=on]:text-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:focus-visible:ring-gray-800 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-white dark:ring-offset-gray-950 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-500 dark:hover:text-gray-500",
   {
     variants: {
       variant: {
-        default: "bg-transparent",
+        default: "bg-transparent dark:bg-transparent",
         outline:
-          "bg-transparent border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-50",
+          "bg-transparent dark:bg-transparent border border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50",
       },
       size: {
         default: "h-10 px-3",

@@ -4,17 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-800 focus:ring-offset-2",
+  "inline-flex items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-800 focus:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "bg-slate-900 dark:bg-slate-50 hover:bg-slate-900/80 dark:hover:bg-slate-50/80 border-transparent text-slate-50 dark:text-slate-900",
+          "bg-gray-900 dark:bg-gray-50 hover:bg-gray-900/80 dark:hover:bg-gray-50/80 border-transparent text-gray-50 dark:text-gray-900",
         secondary:
-          "bg-slate-100 dark:bg-slate-900 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 border-transparent text-slate-900 dark:text-slate-50",
+          "bg-gray-100 dark:bg-gray-900 hover:bg-gray-100/80 dark:hover:bg-gray-900/80 border-transparent text-gray-900 dark:text-gray-50",
         destructive:
-          "bg-red-600 dark:bg-red-900 hover:bg-red-600/80 dark:hover:bg-red-900/80 border-transparent text-slate-50 dark:text-slate-50",
-        outline: "text-slate-900 darktext-slate-200",
+          "bg-red-600 dark:bg-red-900 hover:bg-red-600/80 dark:hover:bg-red-900/80 border-transparent text-gray-50 dark:text-gray-50",
+        outline: "text-gray-900 dark:text-gray-200",
       },
     },
     defaultVariants: {
