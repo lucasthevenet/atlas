@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 import { PlusCircle } from "lucide-react";
 
-import { Button } from "@acme/ui/components/button";
-import { ScrollArea, ScrollBar } from "@acme/ui/components/scroll-area";
-import { Separator } from "@acme/ui/components/separator";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@acme/ui/components/tabs";
+import { Button } from "@acme/ui/button";
+import { ScrollArea, ScrollBar } from "@acme/ui/scroll-area";
+import { Separator } from "@acme/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
 
 import { AlbumArtwork } from "~/components/album-artwork";
 import { Menu } from "~/components/menu";
@@ -45,7 +40,7 @@ export default function HomePage() {
                       </TabsTrigger>
                     </TabsList>
                     <div className="ml-auto mr-4">
-                      <Button>
+                      <Button variant="secondary" color="gray">
                         <PlusCircle className="mr-2 h-4 w-4" />
                         Add music
                       </Button>

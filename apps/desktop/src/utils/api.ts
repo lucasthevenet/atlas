@@ -15,7 +15,6 @@ function getBaseUrl() {
 export function getUrl() {
   return getBaseUrl() + "/api/trpc";
 }
-
 export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   config() {
     return {

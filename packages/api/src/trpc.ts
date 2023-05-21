@@ -6,6 +6,7 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
+
 import { TRPCError, initTRPC } from "@trpc/server";
 import { type FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
@@ -13,6 +14,8 @@ import { ZodError } from "zod";
 
 import { getServerSession, type Session } from "@acme/auth";
 import { prisma } from "@acme/db";
+
+import { experimental_createServerActionRouter } from "./action";
 
 /**
  * 1. CONTEXT
@@ -125,3 +128,7 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+
+export const createAction = experimental_createServerActionRouter(t, {
+  createContext: createTRPCContext,
+});

@@ -10,7 +10,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@acme/ui/components/context-menu";
+} from "@acme/ui/context-menu";
 import { cn } from "@acme/ui/utils";
 
 import { type Album } from "../data/albums";

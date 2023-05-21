@@ -24,7 +24,8 @@ export function DatePickerWithRange({
         <PopoverTrigger asChild>
           <Button
             id="date"
-            variant={"outline"}
+            variant="secondary"
+            color="gray"
             className={cn(
               "w-[300px] justify-start text-left font-normal",
               !date && "text-gray-500 dark:text-gray-500",

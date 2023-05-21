@@ -1,6 +1,11 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
+import { colors } from "./colors";
+import { boxShadow } from "./effects";
+import { backdropBlur } from "./filters";
+import { fontSize } from "./typography";
+
 export default {
   content: [""],
   theme: {
@@ -12,6 +17,10 @@ export default {
       },
     },
     extend: {
+      colors,
+      boxShadow,
+      fontSize,
+      backdropBlur,
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },

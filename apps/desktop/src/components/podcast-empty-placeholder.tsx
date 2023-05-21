@@ -1,6 +1,6 @@
 import { Plus, Podcast } from "lucide-react";
 
-import { Button } from "@acme/ui/components/button";
+import { Button } from "@acme/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@acme/ui/components/dialog";
-import { Input } from "@acme/ui/components/input";
-import { Label } from "@acme/ui/components/label";
+} from "@acme/ui/dialog";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
 
 export function PodcastEmptyPlaceholder() {
   return (

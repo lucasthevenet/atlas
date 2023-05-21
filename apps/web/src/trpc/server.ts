@@ -4,7 +4,8 @@ import { headers } from "next/headers";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { experimental_createTRPCNextAppDirServer } from "@trpc/next/app-dir/server";
 
-import type { AppRouter } from "@acme/api";
+import { appRouter, type AppRouter } from "@acme/api";
+import { createAction } from "@acme/api/src/trpc";
 
 import { getUrl, transformer } from "./shared";
 
@@ -32,3 +33,5 @@ export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
     };
   },
 });
+
+export const action = createAction(appRouter);

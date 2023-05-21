@@ -9,8 +9,8 @@ import {
   User,
 } from "lucide-react";
 
-import { Button } from "@acme/ui/components/button";
-import { ScrollArea } from "@acme/ui/components/scroll-area";
+import { Button } from "@acme/ui/button";
+import { ScrollArea } from "@acme/ui/scroll-area";
 import { cn } from "@acme/ui/utils";
 
 import { type Playlist } from "../data/playlists";
@@ -36,11 +36,21 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               <PlayCircle className="mr-2 h-4 w-4" />
               Listen Now
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <LayoutGrid className="mr-2 h-4 w-4" />
               Browse
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <Radio className="mr-2 h-4 w-4" />
               Radio
             </Button>
@@ -51,23 +61,48 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             Library
           </h2>
           <div className="space-y-1">
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <ListMusic className="mr-2 h-4 w-4" />
               Playlists
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <Music2 className="mr-2 h-4 w-4" />
               Songs
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <User className="mr-2 h-4 w-4" />
               Made for You
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <Mic2 className="mr-2 h-4 w-4" />
               Artists
             </Button>
-            <Button variant="ghost" size="sm" className="w-full justify-start">
+            <Button
+              variant="tertiary"
+              color="gray"
+              size="sm"
+              className="w-full justify-start"
+            >
               <Library className="mr-2 h-4 w-4" />
               Albums
             </Button>
@@ -81,7 +116,8 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             <div className="space-y-1 p-2">
               {playlists?.map((playlist) => (
                 <Button
-                  variant="ghost"
+                  variant="tertiary"
+                  color="gray"
                   size="sm"
                   className="w-full justify-start font-normal"
                   key={playlist}
