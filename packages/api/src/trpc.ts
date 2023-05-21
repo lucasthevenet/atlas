@@ -15,8 +15,6 @@ import { ZodError } from "zod";
 import { getServerSession, type Session } from "@acme/auth";
 import { prisma } from "@acme/db";
 
-import { experimental_createServerActionRouter } from "./action";
-
 /**
  * 1. CONTEXT
  *
@@ -128,7 +126,3 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
-
-export const createAction = experimental_createServerActionRouter(t, {
-  createContext: createTRPCContext,
-});

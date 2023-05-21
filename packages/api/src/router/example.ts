@@ -9,7 +9,7 @@ export const exampleRouter = createTRPCRouter({
         text: z.string(),
       }),
     )
-    .mutation(async (opts) => {
+    .mutation((opts) => {
       return `hello ${opts.input.text}`;
     }),
 });

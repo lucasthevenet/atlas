@@ -39,7 +39,6 @@ const SelectContent = React.forwardRef<
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       ref={ref}
-      // eslint-disable-next-line tailwindcss/classnames-order
       className={cn(
         "relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-white text-gray-900 shadow-md animate-in fade-in-80 dark:bg-gray-950 dark:text-gray-400",
         position === "popper" && "translate-y-1",
