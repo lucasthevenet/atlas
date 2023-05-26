@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-950;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.sbdocs .sbdocs-preview {
+  @apply border-gray-800 bg-white dark:bg-gray-950;
+}
+
+/* @layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+  body {
+    @apply bg-white text-gray-900 dark:text-gray-200;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+} */

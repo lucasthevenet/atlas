@@ -5,6 +5,7 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
+    "dev": "storybook dev -p 6007",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -50,11 +51,27 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.1.0",
-    "@acme/tailwind-config": "0.1.0",
+    "@acme/tailwind-config": "^0.1.0",
+    "@storybook/addon-a11y": "7.0.17",
+    "@storybook/addon-actions": "7.0.17",
+    "@storybook/addon-essentials": "7.0.17",
+    "@storybook/addon-interactions": "7.0.17",
+    "@storybook/addon-links": "7.0.17",
+    "@storybook/addon-styling": "^1.0.8",
+    "@storybook/theming": "7.0.17",
+    "@storybook/blocks": "7.0.17",
+    "@storybook/react": "7.0.17",
+    "@storybook/react-vite": "7.0.17",
+    "@storybook/testing-library": "0.0.14-next.2",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.41.0",
-    "typescript": "^5.0.4"
+    "postcss": "^8.4.23",
+    "storybook": "7.0.17",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9"
   },
   "exports": {
     "./package.json": "./package.json",
@@ -67,164 +84,164 @@
       "types": "./src/utils/index.ts"
     },
     "./accordion": {
-      "import": "./src/components/accordion.tsx",
-      "types": "./src/components/accordion.tsx"
+      "import": "./src/components/accordion/index.tsx",
+      "types": "./src/components/accordion/index.tsx"
     },
     "./alert-dialog": {
-      "import": "./src/components/alert-dialog.tsx",
-      "types": "./src/components/alert-dialog.tsx"
+      "import": "./src/components/alert-dialog/index.tsx",
+      "types": "./src/components/alert-dialog/index.tsx"
     },
     "./aspect-ratio": {
-      "import": "./src/components/aspect-ratio.tsx",
-      "types": "./src/components/aspect-ratio.tsx"
+      "import": "./src/components/aspect-ratio/index.ts",
+      "types": "./src/components/aspect-ratio/index.ts"
     },
     "./avatar": {
-      "import": "./src/components/avatar.tsx",
-      "types": "./src/components/avatar.tsx"
+      "import": "./src/components/avatar/index.ts",
+      "types": "./src/components/avatar/index.ts"
     },
     "./badge": {
-      "import": "./src/components/badge.tsx",
-      "types": "./src/components/badge.tsx"
+      "import": "./src/components/badge/index.ts",
+      "types": "./src/components/badge/index.ts"
     },
     "./button": {
-      "import": "./src/components/button.tsx",
-      "types": "./src/components/button.tsx"
+      "import": "./src/components/button/index.ts",
+      "types": "./src/components/button/index.ts"
     },
     "./calendar": {
-      "import": "./src/components/calendar.tsx",
-      "types": "./src/components/calendar.tsx"
+      "import": "./src/components/calendar/index.ts",
+      "types": "./src/components/calendar/index.ts"
     },
     "./card": {
-      "import": "./src/components/card.tsx",
-      "types": "./src/components/card.tsx"
+      "import": "./src/components/card/index.ts",
+      "types": "./src/components/card/index.ts"
     },
     "./checkbox": {
-      "import": "./src/components/checkbox.tsx",
-      "types": "./src/components/checkbox.tsx"
+      "import": "./src/components/checkbox/index.ts",
+      "types": "./src/components/checkbox/index.ts"
     },
     "./collapsible": {
-      "import": "./src/components/collapsible.tsx",
-      "types": "./src/components/collapsible.tsx"
+      "import": "./src/components/collapsible/index.ts",
+      "types": "./src/components/collapsible/index.ts"
     },
     "./command": {
-      "import": "./src/components/command.tsx",
-      "types": "./src/components/command.tsx"
+      "import": "./src/components/command/index.ts",
+      "types": "./src/components/command/index.ts"
     },
     "./context-menu": {
-      "import": "./src/components/context-menu.tsx",
-      "types": "./src/components/context-menu.tsx"
+      "import": "./src/components/context-menu/index.ts",
+      "types": "./src/components/context-menu/index.ts"
     },
     "./date-picker": {
-      "import": "./src/components/date-picker.tsx",
-      "types": "./src/components/date-picker.tsx"
+      "import": "./src/components/date-picker/index.ts",
+      "types": "./src/components/date-picker/index.ts"
     },
     "./date-range-picker": {
-      "import": "./src/components/date-range-picker.tsx",
-      "types": "./src/components/date-range-picker.tsx"
+      "import": "./src/components/date-range-picker/index.ts",
+      "types": "./src/components/date-range-picker/index.ts"
     },
     "./dialog": {
-      "import": "./src/components/dialog.tsx",
-      "types": "./src/components/dialog.tsx"
+      "import": "./src/components/dialog/index.ts",
+      "types": "./src/components/dialog/index.ts"
     },
     "./dropdown-menu": {
-      "import": "./src/components/dropdown-menu.tsx",
-      "types": "./src/components/dropdown-menu.tsx"
+      "import": "./src/components/dropdown-menu/index.ts",
+      "types": "./src/components/dropdown-menu/index.ts"
     },
     "./form": {
-      "import": "./src/components/form.tsx",
-      "types": "./src/components/form.tsx"
+      "import": "./src/components/form/index.ts",
+      "types": "./src/components/form/index.ts"
     },
     "./hover-card": {
-      "import": "./src/components/hover-card.tsx",
-      "types": "./src/components/hover-card.tsx"
+      "import": "./src/components/hover-card/index.ts",
+      "types": "./src/components/hover-card/index.ts"
     },
     "./input": {
-      "import": "./src/components/input.tsx",
-      "types": "./src/components/input.tsx"
+      "import": "./src/components/input/index.ts",
+      "types": "./src/components/input/index.ts"
     },
     "./label": {
-      "import": "./src/components/label.tsx",
-      "types": "./src/components/label.tsx"
+      "import": "./src/components/label/index.ts",
+      "types": "./src/components/label/index.ts"
     },
     "./menubar": {
-      "import": "./src/components/menubar.tsx",
-      "types": "./src/components/menubar.tsx"
+      "import": "./src/components/menubar/index.ts",
+      "types": "./src/components/menubar/index.ts"
     },
     "./navigation-menu": {
-      "import": "./src/components/navigation-menu.tsx",
-      "types": "./src/components/navigation-menu.tsx"
+      "import": "./src/components/navigation-menu/index.ts",
+      "types": "./src/components/navigation-menu/index.ts"
     },
     "./popover": {
-      "import": "./src/components/popover.tsx",
-      "types": "./src/components/popover.tsx"
+      "import": "./src/components/popover/index.ts",
+      "types": "./src/components/popover/index.ts"
     },
     "./progress": {
-      "import": "./src/components/progress.tsx",
-      "types": "./src/components/progress.tsx"
+      "import": "./src/components/progress/index.ts",
+      "types": "./src/components/progress/index.ts"
     },
     "./radio-group": {
-      "import": "./src/components/radio-group.tsx",
-      "types": "./src/components/radio-group.tsx"
+      "import": "./src/components/radio-group/index.ts",
+      "types": "./src/components/radio-group/index.ts"
     },
     "./scroll-area": {
-      "import": "./src/components/scroll-area.tsx",
-      "types": "./src/components/scroll-area.tsx"
+      "import": "./src/components/scroll-area/index.ts",
+      "types": "./src/components/scroll-area/index.ts"
     },
     "./select": {
-      "import": "./src/components/select.tsx",
-      "types": "./src/components/select.tsx"
+      "import": "./src/components/select/index.ts",
+      "types": "./src/components/select/index.ts"
     },
     "./separator": {
-      "import": "./src/components/separator.tsx",
-      "types": "./src/components/separator.tsx"
+      "import": "./src/components/separator/index.ts",
+      "types": "./src/components/separator/index.ts"
     },
     "./sheet": {
-      "import": "./src/components/sheet.tsx",
-      "types": "./src/components/sheet.tsx"
+      "import": "./src/components/sheet/index.ts",
+      "types": "./src/components/sheet/index.ts"
     },
     "./skeleton": {
-      "import": "./src/components/skeleton.tsx",
-      "types": "./src/components/skeleton.tsx"
+      "import": "./src/components/skeleton/index.ts",
+      "types": "./src/components/skeleton/index.ts"
     },
     "./slider": {
-      "import": "./src/components/slider.tsx",
-      "types": "./src/components/slider.tsx"
+      "import": "./src/components/slider/index.ts",
+      "types": "./src/components/slider/index.ts"
     },
     "./switch": {
-      "import": "./src/components/switch.tsx",
-      "types": "./src/components/switch.tsx"
+      "import": "./src/components/switch/index.ts",
+      "types": "./src/components/switch/index.ts"
     },
     "./table": {
-      "import": "./src/components/table.tsx",
-      "types": "./src/components/table.tsx"
+      "import": "./src/components/table/index.ts",
+      "types": "./src/components/table/index.ts"
     },
     "./tabs": {
-      "import": "./src/components/tabs.tsx",
-      "types": "./src/components/tabs.tsx"
+      "import": "./src/components/tabs/index.ts",
+      "types": "./src/components/tabs/index.ts"
     },
     "./textarea": {
-      "import": "./src/components/textarea.tsx",
-      "types": "./src/components/textarea.tsx"
+      "import": "./src/components/textarea/index.ts",
+      "types": "./src/components/textarea/index.ts"
     },
     "./toast": {
-      "import": "./src/components/toast.tsx",
-      "types": "./src/components/toast.tsx"
+      "import": "./src/components/toast/index.ts",
+      "types": "./src/components/toast/index.ts"
     },
     "./toaster": {
-      "import": "./src/components/toaster.tsx",
-      "types": "./src/components/toaster.tsx"
+      "import": "./src/components/toaster/index.ts",
+      "types": "./src/components/toaster/index.ts"
     },
     "./toggle": {
-      "import": "./src/components/toggle.tsx",
-      "types": "./src/components/toggle.tsx"
+      "import": "./src/components/toggle/index.ts",
+      "types": "./src/components/toggle/index.ts"
     },
     "./tooltip": {
-      "import": "./src/components/tooltip.tsx",
-      "types": "./src/components/tooltip.tsx"
+      "import": "./src/components/tooltip/index.ts",
+      "types": "./src/components/tooltip/index.ts"
     },
     "./use-toast": {
-      "import": "./src/components/use-toast.tsx",
-      "types": "./src/components/use-toast.tsx"
+      "import": "./src/components/use-toast/index.ts",
+      "types": "./src/components/use-toast/index.ts"
     }
   },
   "typesVersions": {
@@ -233,127 +250,127 @@
         "src/utils/index.ts"
       ],
       "accordion": [
-        "src/components/accordion.tsx"
+        "src/components/accordion/index.ts"
       ],
       "alert-dialog": [
-        "src/components/alert-dialog.tsx"
+        "src/components/alert-dialog/index.ts"
       ],
       "alert": [
-        "src/components/alert.tsx"
+        "src/components/alert/index.ts"
       ],
       "aspect-ratio": [
-        "src/components/aspect-ratio.tsx"
+        "src/components/aspect-ratio/index.ts"
       ],
       "avatar": [
-        "src/components/avatar.tsx"
+        "src/components/avatar/index.ts"
       ],
       "badge": [
-        "src/components/badge.tsx"
+        "src/components/badge/index.ts"
       ],
       "button": [
-        "src/components/button.tsx"
+        "src/components/button/index.ts"
       ],
       "calendar": [
-        "src/components/calendar.tsx"
+        "src/components/calendar/index.ts"
       ],
       "card": [
-        "src/components/card.tsx"
+        "src/components/card/index.ts"
       ],
       "checkbox": [
-        "src/components/checkbox.tsx"
+        "src/components/checkbox/index.ts"
       ],
       "collapsible": [
-        "src/components/collapsible.tsx"
+        "src/components/collapsible/index.ts"
       ],
       "command": [
-        "src/components/command.tsx"
+        "src/components/command/index.ts"
       ],
       "context-menu": [
-        "src/components/context-menu.tsx"
+        "src/components/context-menu/index.ts"
       ],
       "date-picker": [
-        "src/components/date-picker.tsx"
+        "src/components/date-picker/index.ts"
       ],
       "date-range-picker": [
-        "src/components/date-range-picker.tsx"
+        "src/components/date-range-picker/index.ts"
       ],
       "dialog": [
-        "src/components/dialog.tsx"
+        "src/components/dialog/index.ts"
       ],
       "dropdown-menu": [
-        "src/components/dropdown-menu.tsx"
+        "src/components/dropdown-menu/index.ts"
       ],
       "form": [
-        "src/components/form.tsx"
+        "src/components/form/index.ts"
       ],
       "hover-card": [
-        "src/components/hover-card.tsx"
+        "src/components/hover-card/index.ts"
       ],
       "input": [
-        "src/components/input.tsx"
+        "src/components/input/index.ts"
       ],
       "label": [
-        "src/components/label.tsx"
+        "src/components/label/index.ts"
       ],
       "menubar": [
-        "src/components/menubar.tsx"
+        "src/components/menubar/index.ts"
       ],
       "navigation-menu": [
-        "src/components/navigation-menu.tsx"
+        "src/components/navigation-menu/index.ts"
       ],
       "popover": [
-        "src/components/popover.tsx"
+        "src/components/popover/index.ts"
       ],
       "progress": [
-        "src/components/progress.tsx"
+        "src/components/progress/index.ts"
       ],
       "radio-group": [
-        "src/components/radio-group.tsx"
+        "src/components/radio-group/index.ts"
       ],
       "scroll-area": [
-        "src/components/scroll-area.tsx"
+        "src/components/scroll-area/index.ts"
       ],
       "select": [
-        "src/components/select.tsx"
+        "src/components/select/index.ts"
       ],
       "separator": [
-        "src/components/separator.tsx"
+        "src/components/separator/index.ts"
       ],
       "sheet": [
-        "src/components/sheet.tsx"
+        "src/components/sheet/index.ts"
       ],
       "skeleton": [
-        "src/components/skeleton.tsx"
+        "src/components/skeleton/index.ts"
       ],
       "slider": [
-        "src/components/slider.tsx"
+        "src/components/slider/index.ts"
       ],
       "switch": [
-        "src/components/switch.tsx"
+        "src/components/switch/index.ts"
       ],
       "table": [
-        "src/components/table.tsx"
+        "src/components/table/index.ts"
       ],
       "tabs": [
-        "src/components/tabs.tsx"
+        "src/components/tabs/index.ts"
       ],
       "textarea": [
-        "src/components/textarea.tsx"
+        "src/components/textarea/index.ts"
       ],
       "toast": [
-        "src/components/toast.tsx"
+        "src/components/toast/index.ts"
       ],
       "toaster": [
-        "src/components/toaster.tsx"
+        "src/components/toaster/index.ts"
       ],
       "toggle": [
-        "src/components/toggle.tsx"
+        "src/components/toggle/index.ts"
       ],
       "tooltip": [
-        "src/components/tooltip.tsx"
+        "src/components/tooltip/index.ts"
       ],
       "use-toast": [
-        "src/components/use-toast.tsx"
+        "src/components/use-toast/index.ts"
       ]
     }
   }
