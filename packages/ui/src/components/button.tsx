@@ -17,7 +17,7 @@ const buttonVariants = cva(
       size: {
         sm: "gap-2 px-3.5 py-2 text-sm",
         md: "gap-2 py-2.5 px-4 text-sm",
-        lg: "gap-2 py-2.5 px-4.5 text-md",
+        lg: "gap-2 py-2.5 px-[18px] text-md",
         xl: "gap-2 py-3 px-5 text-md",
         "2xl": "gap-3 py-3.5 px-6 text-lg",
       },
@@ -101,7 +101,7 @@ const buttonVariants = cva(
       },
       {
         variant: "link",
-        className: "py-0 px-0 underline-offset-4 focus-visible:underline",
+        className: "py-0 px-0 underline-offset-4 shadow-none focus-visible:underline",
       },
       {
         variant: "link",
@@ -146,11 +146,11 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, color, ...props }, ref) => {
+  ({ className, variant, size, destructive, asChild = false, color, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, color, className }))}
+        className={cn(buttonVariants({ variant, size, destructive, color, className }))}
         ref={ref}
         {...props}
       />

@@ -7,7 +7,7 @@ import { backdropBlur } from "./filters";
 import { fontSize } from "./typography";
 
 export default {
-  content: [""],
+  content: ["../../packages/*/src/**/*.tsx", "../../apps/*/src/**/*.tsx"],
   theme: {
     container: {
       center: true,
