@@ -12,6 +12,7 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+      actions: { argTypesRegex: "^on[A-Z].*" },
     },
     docs: {
       theme: themes.dark,
@@ -30,11 +31,6 @@ export const decorators = [
     attributeName: "data-mode",
     parentSelector: "html",
   }),
-  (Story) => (
-    <div>
-      <Story />
-    </div>
-  ),
 ];
 
 export default preview;

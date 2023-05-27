@@ -2,7 +2,7 @@ import { useArgs } from "@storybook/preview-api";
 import type { Decorator, Meta, StoryObj } from "@storybook/react";
 import { addDays, eachDayOfInterval } from "date-fns";
 
-import { Calendar, CalendarProps } from "./calendar";
+import { DatePicker } from "./date-picker";
 
 // @ts-expect-error
 const handleDateChange = function Component(Story, ctx) {
@@ -26,8 +26,8 @@ const handleDateChange = function Component(Story, ctx) {
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Components/Calendar",
-  component: Calendar,
+  title: "Components/DatePicker",
+  component: DatePicker,
   decorators: [handleDateChange],
   args: {
     mode: "default",
@@ -51,7 +51,7 @@ const meta = {
       control: "date",
     },
   },
-} satisfies Meta<typeof Calendar>;
+} satisfies Meta<typeof DatePicker>;
 
 export default meta;
 

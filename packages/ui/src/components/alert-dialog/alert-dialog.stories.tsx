@@ -1,3 +1,5 @@
+import { action } from "@storybook/addon-actions";
+import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "../button";
@@ -17,26 +19,18 @@ import {
 const meta = {
   title: "Components/AlertDialog",
   component: AlertDialog,
-  render: (props) => (
-    <AlertDialog {...props}>
-      <AlertDialogTrigger asChild>
-        <Button variant="secondary">Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  ),
+  decorators: [
+    function addState(story) {
+      const [{ open }, updateArgs] = useArgs();
+
+      function onOpenChange(value: boolean) {
+        action("onOpenChange")(value);
+        updateArgs({ open: value });
+      }
+
+      return story({ open, onOpenChange });
+    },
+  ],
   argTypes: {
     open: {
       control: "boolean",
@@ -56,7 +50,25 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const demo: Story = {
   name: "Default",
-  args: {
-    defaultOpen: true,
-  },
+
+  render: (args) => (
+    <AlertDialog {...args}>
+      <AlertDialogTrigger asChild>
+        <Button variant="secondary">Show Dialog</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
 };
