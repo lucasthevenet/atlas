@@ -8,22 +8,15 @@ import { Input } from "./input";
 const meta = {
   title: "Components/Input",
   component: Input,
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
-    function handleChange(value: unknown) {
-      // @ts-expect-error bad types
-      onChange?.(value);
-      updateArgs({ value });
+    function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
+      onChange?.(evt);
+      updateArgs({ value: evt.target.value });
     }
 
-    return (
-      <Input
-        {...args}
-        onChange={(e) => handleChange(e.target.value)}
-        value={value}
-      />
-    );
+    return <Input {...args} onChange={(e) => handleChange(e)} value={value} />;
   },
   argTypes: {
     onChange: {
@@ -59,11 +52,11 @@ export const withLabel: Story = {
   args: {
     value: "Hello World",
   },
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
     function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
-      onChange?.(value);
+      onChange?.(evt);
       updateArgs({ value: evt.target.value });
     }
 
@@ -89,11 +82,11 @@ export const withText: Story = {
   args: {
     value: "Hello World",
   },
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
     function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
-      onChange?.(value);
+      onChange?.(evt);
       updateArgs({ value: evt.target.value });
     }
 
@@ -119,11 +112,11 @@ export const File: Story = {
   args: {
     type: "file",
   },
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
     function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
-      onChange?.(value);
+      onChange?.(evt);
       updateArgs({ value: evt.target.value });
     }
     return (

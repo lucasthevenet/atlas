@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cva } from "class-variance-authority";
 
-import { NonNullableVariantProps, cn } from "../../utils";
+import { cn, type NonNullableVariantProps } from "../../utils";
 
 const badgeVariants = cva("inline-flex items-center font-medium", {
   variants: {

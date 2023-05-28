@@ -1,4 +1,8 @@
-import { VariantProps, cx, type CxOptions } from "class-variance-authority";
+import {
+  cx,
+  type CxOptions,
+  type VariantProps,
+} from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: CxOptions) {
@@ -13,5 +17,6 @@ type NoNullField<T> = T extends Record<string, unknown>
     }
   : NonNullable<T>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type NonNullableVariantProps<T extends (...args: any) => any> =
   NoNullField<VariantProps<T>>;

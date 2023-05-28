@@ -2,11 +2,13 @@ import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
 import { addDays, eachDayOfInterval } from "date-fns";
 import {
-  DateRange,
-  DayPickerDefaultProps,
-  DayPickerMultipleProps,
-  DayPickerRangeProps,
-  DayPickerSingleProps,
+  type DayPickerDefaultProps,
+  type DayPickerMultipleProps,
+  type DayPickerRangeProps,
+  type DayPickerSingleProps,
+  type SelectMultipleEventHandler,
+  type SelectRangeEventHandler,
+  type SelectSingleEventHandler,
 } from "react-day-picker";
 
 import { Calendar } from "./calendar";
@@ -31,8 +33,6 @@ const meta = {
 } satisfies Meta<typeof Calendar>;
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
 
 type DefaultStory = StoryObj<Meta<React.FC<DayPickerDefaultProps>>>;
 
@@ -62,11 +62,15 @@ export const single: SingleStory = {
       control: "date",
     },
   },
-  render: function Render({ onSelect, ...args }) {
-    const [{ selected }, setArgs] = useArgs();
-    const handleSelect = (value: unknown) => {
-      // @ts-expect-error bad types
-      onSelect?.(value);
+  render: function Render({ onSelect, ...args }, ctx) {
+    const [{ selected }, setArgs] = useArgs<typeof ctx.args>();
+    const handleSelect: SelectSingleEventHandler = (
+      value,
+      selectedDay,
+      activeModifiers,
+      e,
+    ) => {
+      onSelect?.(value, selectedDay, activeModifiers, e);
       setArgs({ selected: value });
     };
 
@@ -83,11 +87,15 @@ export const multiple: MultipleStory = {
       end: addDays(new Date(), 5),
     }),
   },
-  render: function Render({ onSelect, ...args }) {
-    const [{ selected }, setArgs] = useArgs();
-    const handleSelect = (value: unknown) => {
-      // @ts-expect-error bad types
-      onSelect?.(value);
+  render: function Render({ onSelect, ...args }, ctx) {
+    const [{ selected }, setArgs] = useArgs<typeof ctx.args>();
+    const handleSelect: SelectMultipleEventHandler = (
+      value,
+      selectedDay,
+      activeModifiers,
+      e,
+    ) => {
+      onSelect?.(value, selectedDay, activeModifiers, e);
       setArgs({ selected: value });
     };
 
@@ -118,9 +126,13 @@ export const range: RangeStory = {
   render: function Render({ onSelect, ...args }, ctx) {
     const [{ selected }, setArgs] = useArgs<typeof ctx.args>();
 
-    const handleSelect = (value?: DateRange) => {
-      // @ts-expect-error bad types
-      onSelect?.(value);
+    const handleSelect: SelectRangeEventHandler = (
+      value,
+      selectedDay,
+      activeModifiers,
+      e,
+    ) => {
+      onSelect?.(value, selectedDay, activeModifiers, e);
       setArgs({ selected: value });
     };
 

@@ -1,6 +1,7 @@
 import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
 import { addDays } from "date-fns";
+import { type SelectRangeEventHandler } from "react-day-picker";
 
 import { DateRangePicker } from "./date-range-picker";
 
@@ -8,14 +9,18 @@ import { DateRangePicker } from "./date-range-picker";
 const meta = {
   title: "Components/DateRangePicker",
   component: DateRangePicker,
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
-    function handleChange(value: unknown) {
-      // @ts-expect-error bad types
-      onChange?.(value);
-      updateArgs({ value });
-    }
+    const handleChange: SelectRangeEventHandler = (
+      range,
+      selectedDay,
+      activeModifiers,
+      e,
+    ) => {
+      onChange?.(range, selectedDay, activeModifiers, e);
+      updateArgs({ value: range });
+    };
 
     return <DateRangePicker {...args} onChange={handleChange} value={value} />;
   },

@@ -42,8 +42,8 @@ type Story = StoryObj<typeof meta>;
 export const demo: Story = {
   name: "Default",
 
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, setArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);
@@ -84,8 +84,8 @@ export const demo: Story = {
 export const withForm: Story = {
   name: "With Form",
 
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, setArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);
@@ -101,7 +101,8 @@ export const withForm: Story = {
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&apos;re
+              done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">

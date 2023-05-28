@@ -42,8 +42,8 @@ type Story = StoryObj<typeof meta>;
 export const demo: Story = {
   name: "Default",
 
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, setArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);

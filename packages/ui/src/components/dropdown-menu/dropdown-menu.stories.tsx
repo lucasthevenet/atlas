@@ -17,6 +17,10 @@ import {
   Users,
 } from "lucide-react";
 
+import {
+  createSubComponentStory,
+  useSubComponentArgs,
+} from "../../utils/subcomponents";
 import { Button } from "../button";
 import {
   DropdownMenu,
@@ -98,8 +102,8 @@ type Story = StoryObj<typeof meta>;
 export const demo: Story = {
   name: "Default",
   args: { open: false },
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, setArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);
@@ -198,20 +202,68 @@ export const demo: Story = {
   },
 };
 
+const checkboxItem = createSubComponentStory({
+  title: "Components/DropdownMenu/CheckboxItem",
+  component: DropdownMenuCheckboxItem,
+  argTypes: {
+    checked: {
+      control: "boolean",
+      description: "Whether the checkbox is checked or not.",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+    },
+    onCheckedChange: {
+      action: "onCheckedChange",
+      description:
+        "Event handler called when the checkbox is checked or unchecked.",
+      table: {
+        type: {
+          summary: "function",
+          detail: "(checked: boolean) => void",
+        },
+      },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Whether the checkbox is disabled or not.",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+    },
+  },
+  args: {
+    checked: false,
+    disabled: false,
+  },
+});
+
 export const withForm: Story = {
   name: "With Checkbox",
+  //@ts-expect-error idk
   args: {
-    showStatusBar: false,
-    showActivityBar: false,
-    showPanel: false,
-  } as any,
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open, showStatusBar, showActivityBar, showPanel }, setArgs] =
-      useArgs();
+    ...checkboxItem.args,
+  },
+  argTypes: {
+    ...checkboxItem.argTypes,
+  },
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
+    const [{ checked, onCheckedChange }, setCheckboxArgs] =
+      useSubComponentArgs(checkboxItem);
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);
       setArgs({ open: nextOpen });
+    };
+
+    const handleCheckedChange = (nextChecked: boolean) => {
+      onCheckedChange?.(nextChecked);
+      setCheckboxArgs({ checked: nextChecked });
     };
 
     return (
@@ -225,21 +277,21 @@ export const withForm: Story = {
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuCheckboxItem
-            checked={showStatusBar}
-            onCheckedChange={(showStatusBar) => setArgs({ showStatusBar })}
+            checked={checked}
+            onCheckedChange={handleCheckedChange}
           >
             Status Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
-            checked={showActivityBar}
-            onCheckedChange={(showActivityBar) => setArgs({ showActivityBar })}
+            checked={checked}
+            onCheckedChange={handleCheckedChange}
             disabled
           >
             Activity Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
-            checked={showPanel}
-            onCheckedChange={(showPanel) => setArgs({ showPanel })}
+            checked={checked}
+            onCheckedChange={handleCheckedChange}
           >
             Panel
           </DropdownMenuCheckboxItem>
@@ -247,4 +299,4 @@ export const withForm: Story = {
       </DropdownMenu>
     );
   },
-} satisfies Story;
+};

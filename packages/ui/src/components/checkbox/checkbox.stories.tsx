@@ -35,11 +35,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const demo: Story = {
   name: "Default",
-  render: function Render({ onCheckedChange, ...args }) {
-    const [{ checked }, setArgs] = useArgs();
+  render: function Render({ onCheckedChange, ...args }, ctx) {
+    const [{ checked }, setArgs] = useArgs<typeof ctx.args>();
     const onChecked = (value: boolean) => {
       onCheckedChange?.(value);
       setArgs({ checked: value });
@@ -65,8 +64,8 @@ export const demo: Story = {
 };
 
 export const withText: Story = {
-  render: function Render({ onCheckedChange, ...args }) {
-    const [{ checked }, setArgs] = useArgs();
+  render: function Render({ onCheckedChange, ...args }, ctx) {
+    const [{ checked }, setArgs] = useArgs<typeof ctx.args>();
     const onChecked = (value: boolean) => {
       onCheckedChange?.(value);
       setArgs({ checked: value });
@@ -99,8 +98,8 @@ export const disabled: Story = {
   args: {
     disabled: true,
   },
-  render: function Render({ onCheckedChange, ...args }) {
-    const [{ checked }, setArgs] = useArgs();
+  render: function Render({ onCheckedChange, ...args }, ctx) {
+    const [{ checked }, setArgs] = useArgs<typeof ctx.args>();
     const onChecked = (value: boolean) => {
       onCheckedChange?.(value);
       setArgs({ checked: value });

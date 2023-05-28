@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
@@ -101,12 +101,15 @@ export const withDialog: DialogStory = {
     function Component(Story, ctx) {
       const [, setArgs] = useArgs<typeof ctx.args>();
 
-      const onOpenChange = (open: boolean) => {
-        ctx.args.onOpenChange?.(open);
-        if (ctx.args.open !== undefined) {
-          setArgs({ open });
-        }
-      };
+      const onOpenChange = useCallback(
+        (open: boolean) => {
+          ctx.args.onOpenChange?.(open);
+          if (ctx.args.open !== undefined) {
+            setArgs({ open });
+          }
+        },
+        [setArgs, ctx.args],
+      );
 
       useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -118,7 +121,7 @@ export const withDialog: DialogStory = {
 
         document.addEventListener("keydown", down);
         return () => document.removeEventListener("keydown", down);
-      }, []);
+      }, [onOpenChange]);
 
       return (
         <>

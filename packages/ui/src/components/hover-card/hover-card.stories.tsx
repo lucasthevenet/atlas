@@ -174,10 +174,10 @@ type Story = StoryObj<typeof meta>;
 export const basic: Story = {
   name: "Basic",
   args: { open: false },
-  render: function Render({ onOpenChange, ...args }) {
+  render: function Render({ onOpenChange, ...args }, ctx) {
     const [contentArgs] = useSubComponentArgs(content);
     const [triggerArgs] = useSubComponentArgs(trigger);
-    const [{ open }, setArgs] = useArgs();
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);
@@ -202,10 +202,10 @@ export const basic: Story = {
 
 export const userCard: Story = {
   name: "User Card",
-  render: function Render({ onOpenChange, ...args }) {
+  render: function Render({ onOpenChange, ...args }, ctx) {
     const [contentArgs] = useSubComponentArgs(content);
     const [triggerArgs] = useSubComponentArgs(trigger);
-    const [{ open }, setArgs] = useArgs();
+    const [{ open }, setArgs] = useArgs<typeof ctx.args>();
 
     const handleOpenChange = (nextOpen: boolean) => {
       onOpenChange?.(nextOpen);

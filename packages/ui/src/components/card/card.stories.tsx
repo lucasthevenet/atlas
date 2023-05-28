@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { AlertCircle, BellRing, Check, Terminal } from "lucide-react";
+import { BellRing, Check } from "lucide-react";
 
 import { cn } from "../../utils";
 import { Button } from "../button";

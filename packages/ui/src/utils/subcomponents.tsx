@@ -1,6 +1,6 @@
-import React from "react";
+import type React from "react";
 import { useArgs } from "@storybook/preview-api";
-import { Args, ArgTypes, Meta } from "@storybook/react";
+import { type Args, type ArgTypes, type Meta } from "@storybook/react";
 
 type InputType = ArgTypes[keyof ArgTypes];
 
@@ -18,7 +18,7 @@ export function createSubComponentStory<T extends Args>(component: Meta<T>) {
   }, {} as ArgTypes);
 
   const args = Object.keys(component.args ?? {}).reduce((acc, key) => {
-    const arg = component.args?.[key];
+    const arg = component.args?.[key] as string;
     const tempKey = `${component.title}.${key}`;
     acc[tempKey] = arg;
 
@@ -46,10 +46,11 @@ export function useSubComponentArgs<T extends Meta>(component: T) {
         keyof typeof component.args,
       ];
       if (componentName === component.title) {
-        acc[argName] = args?.[key];
+        acc[argName] = args?.[key] as string;
       }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return acc;
   }, {} as MetaComponentArgs<T>);
 

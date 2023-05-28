@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 
-import { NonNullableVariantProps, cn } from "../../utils";
+import { cn, type NonNullableVariantProps } from "../../utils";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center rounded-lg font-semibold shadow-xs transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none",

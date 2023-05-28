@@ -1,20 +1,24 @@
 import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
+import { type SelectSingleEventHandler } from "react-day-picker";
 
 import { DatePicker } from "./date-picker";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Components/DatePicker",
   component: DatePicker,
-  render: function Render({ onChange, ...args }) {
-    const [{ value }, updateArgs] = useArgs();
+  render: function Render({ onChange, ...args }, ctx) {
+    const [{ value }, updateArgs] = useArgs<typeof ctx.args>();
 
-    function handleChange(value: unknown) {
-      // @ts-expect-error bad types
-      onChange?.(value);
-      updateArgs({ value });
-    }
+    const handleChange: SelectSingleEventHandler = (
+      day,
+      selectedDay,
+      activeModifiers,
+      e,
+    ) => {
+      onChange?.(day, selectedDay, activeModifiers, e);
+      updateArgs({ value: day });
+    };
 
     return <DatePicker {...args} onChange={handleChange} value={value} />;
   },

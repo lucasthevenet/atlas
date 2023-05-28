@@ -43,8 +43,8 @@ type Story = StoryObj<typeof meta>;
 
 export const basic: Story = {
   name: "Basic",
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, updateArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, updateArgs] = useArgs<typeof ctx.args>();
 
     function handleOpenChange(value: boolean) {
       onOpenChange?.(value);
@@ -69,8 +69,8 @@ export const basic: Story = {
 
 export const styled: Story = {
   name: "Styled",
-  render: function Render({ onOpenChange, ...args }) {
-    const [{ open }, updateArgs] = useArgs();
+  render: function Render({ onOpenChange, ...args }, ctx) {
+    const [{ open }, updateArgs] = useArgs<typeof ctx.args>();
 
     function handleOpenChange(value: boolean) {
       onOpenChange?.(value);
