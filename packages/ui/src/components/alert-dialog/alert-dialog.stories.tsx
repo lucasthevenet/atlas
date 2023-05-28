@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -19,18 +18,6 @@ import {
 const meta = {
   title: "Components/AlertDialog",
   component: AlertDialog,
-  decorators: [
-    function addState(story) {
-      const [{ open }, updateArgs] = useArgs();
-
-      function onOpenChange(value: boolean) {
-        action("onOpenChange")(value);
-        updateArgs({ open: value });
-      }
-
-      return story({ open, onOpenChange });
-    },
-  ],
   argTypes: {
     open: {
       control: "boolean",
@@ -42,6 +29,10 @@ const meta = {
       control: "boolean",
     },
   },
+  args: {
+    defaultOpen: false,
+    open: true,
+  },
 } satisfies Meta<typeof AlertDialog>;
 
 export default meta;
@@ -51,24 +42,33 @@ type Story = StoryObj<typeof meta>;
 export const demo: Story = {
   name: "Default",
 
-  render: (args) => (
-    <AlertDialog {...args}>
-      <AlertDialogTrigger asChild>
-        <Button variant="secondary">Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  ),
+  render: function Render({ onOpenChange, ...args }) {
+    const [{ open }, setArgs] = useArgs();
+
+    const handleOpenChange = (nextOpen: boolean) => {
+      onOpenChange?.(nextOpen);
+      setArgs({ open: nextOpen });
+    };
+
+    return (
+      <AlertDialog {...args} open={open} onOpenChange={handleOpenChange}>
+        <AlertDialogTrigger asChild>
+          <Button variant="secondary">Show Dialog</Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    );
+  },
 };

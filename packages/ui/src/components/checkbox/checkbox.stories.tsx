@@ -7,20 +7,7 @@ import { Checkbox } from "./checkbox";
 const meta = {
   title: "Components/Checkbox",
   component: Checkbox,
-  decorators: [
-    function addState(Story, ctx) {
-      const [{ checked }, setArgs] = useArgs<typeof ctx.args>();
-
-      function onCheckedChange(checked: boolean) {
-        ctx.args.onCheckedChange?.(checked);
-        setArgs({ checked });
-      }
-
-      return (
-        <Story {...ctx} args={{ ...ctx.args, checked, onCheckedChange }} />
-      );
-    },
-  ],
+  tags: ["autodocs"],
   argTypes: {
     checked: {
       control: "boolean",
@@ -39,9 +26,9 @@ const meta = {
     },
   },
   args: {
-    checked: false,
-    defaultChecked: false,
+    asChild: false,
     disabled: false,
+    defaultChecked: false,
   },
 } satisfies Meta<typeof Checkbox>;
 
@@ -51,10 +38,21 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const demo: Story = {
   name: "Default",
-  render: function Render(args) {
+  render: function Render({ onCheckedChange, ...args }) {
+    const [{ checked }, setArgs] = useArgs();
+    const onChecked = (value: boolean) => {
+      onCheckedChange?.(value);
+      setArgs({ checked: value });
+    };
+
     return (
       <div className="flex items-center space-x-2">
-        <Checkbox id="terms" {...args} />
+        <Checkbox
+          id="terms"
+          {...args}
+          checked={checked}
+          onCheckedChange={onChecked}
+        />
         <label
           htmlFor="terms"
           className="text-sm text-gray-900 dark:text-gray-200 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -67,10 +65,20 @@ export const demo: Story = {
 };
 
 export const withText: Story = {
-  render: function Render(args) {
+  render: function Render({ onCheckedChange, ...args }) {
+    const [{ checked }, setArgs] = useArgs();
+    const onChecked = (value: boolean) => {
+      onCheckedChange?.(value);
+      setArgs({ checked: value });
+    };
     return (
       <div className="items-top flex space-x-2">
-        <Checkbox id="terms1" {...args} />
+        <Checkbox
+          id="terms1"
+          {...args}
+          checked={checked}
+          onCheckedChange={onChecked}
+        />
         <div className="grid gap-1.5 leading-none">
           <label
             htmlFor="terms1"
@@ -88,10 +96,23 @@ export const withText: Story = {
 };
 
 export const disabled: Story = {
-  render: function Render(args) {
+  args: {
+    disabled: true,
+  },
+  render: function Render({ onCheckedChange, ...args }) {
+    const [{ checked }, setArgs] = useArgs();
+    const onChecked = (value: boolean) => {
+      onCheckedChange?.(value);
+      setArgs({ checked: value });
+    };
     return (
       <div className="flex items-center space-x-2">
-        <Checkbox id="terms2" {...args} disabled />
+        <Checkbox
+          id="terms2"
+          {...args}
+          checked={checked}
+          onCheckedChange={onChecked}
+        />
         <div className="grid gap-1.5 leading-none">
           <label
             htmlFor="terms2"

@@ -1,5 +1,5 @@
-import { resolve } from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
+import { resolve } from "path";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
@@ -10,6 +10,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-styling",
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/react-vite",

@@ -1,54 +1,31 @@
 import { useArgs } from "@storybook/preview-api";
-import type { Decorator, Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { addDays, eachDayOfInterval } from "date-fns";
+import {
+  DateRange,
+  DayPickerDefaultProps,
+  DayPickerMultipleProps,
+  DayPickerRangeProps,
+  DayPickerSingleProps,
+} from "react-day-picker";
 
-import { Calendar, CalendarProps } from "./calendar";
+import { Calendar } from "./calendar";
 
-// @ts-expect-error
-const handleDateChange = function Component(Story, ctx) {
-  const [, setArgs] = useArgs<typeof ctx.args>();
-  const onSelect = (selected: unknown) => {
-    ctx.args.onSelect?.(selected);
-    if (ctx.args.selected !== undefined) {
-      setArgs({ selected });
-    }
-  };
-
-  return (
-    <Story
-      args={{
-        ...ctx.args,
-        onSelect,
-      }}
-    />
-  );
-};
-
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Components/Calendar",
   component: Calendar,
-  decorators: [handleDateChange],
   args: {
-    mode: "default",
     showOutsideDays: true,
-    selected: new Date(),
   },
   argTypes: {
-    mode: {
-      control: "inline-radio",
-      options: ["default", "multiple", "range", "single"],
-      defaultValue: "default",
-    },
+    // mode: {
+    //   control: "inline-radio",
+    //   options: ["default", "multiple", "range", "single"],
+    //   defaultValue: "default",
+    // },
     showOutsideDays: {
       control: "boolean",
       defaultValue: true,
-    },
-    onSelect: {
-      action: "onSelect",
-    },
-    selected: {
-      control: "date",
     },
   },
 } satisfies Meta<typeof Calendar>;
@@ -57,8 +34,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+type DefaultStory = StoryObj<Meta<React.FC<DayPickerDefaultProps>>>;
+
+type SingleStory = StoryObj<Meta<React.FC<DayPickerSingleProps>>>;
+
+type MultipleStory = StoryObj<Meta<React.FC<DayPickerMultipleProps>>>;
+
+type RangeStory = StoryObj<Meta<React.FC<DayPickerRangeProps>>>;
+
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const $default: Story = {
+export const $default: DefaultStory = {
   name: "Default",
   args: {
     mode: "default",
@@ -66,15 +51,30 @@ export const $default: Story = {
   },
 };
 
-export const single: Story = {
+export const single: SingleStory = {
   name: "Single",
   args: {
     mode: "single",
     selected: new Date(),
   },
+  argTypes: {
+    selected: {
+      control: "date",
+    },
+  },
+  render: function Render({ onSelect, ...args }) {
+    const [{ selected }, setArgs] = useArgs();
+    const handleSelect = (value: unknown) => {
+      // @ts-expect-error bad types
+      onSelect?.(value);
+      setArgs({ selected: value });
+    };
+
+    return <Calendar {...args} selected={selected} onSelect={handleSelect} />;
+  },
 };
 
-export const multiple: Story = {
+export const multiple: MultipleStory = {
   name: "Multiple",
   args: {
     mode: "multiple",
@@ -83,15 +83,47 @@ export const multiple: Story = {
       end: addDays(new Date(), 5),
     }),
   },
+  render: function Render({ onSelect, ...args }) {
+    const [{ selected }, setArgs] = useArgs();
+    const handleSelect = (value: unknown) => {
+      // @ts-expect-error bad types
+      onSelect?.(value);
+      setArgs({ selected: value });
+    };
+
+    return <Calendar {...args} selected={selected} onSelect={handleSelect} />;
+  },
 };
 
-export const range: Story = {
+export const range: RangeStory = {
   name: "Range",
   args: {
-    mode: "range",
     selected: {
       from: new Date(),
       to: addDays(new Date(), 5),
     },
+    mode: "range",
+  },
+  argTypes: {
+    selected: {
+      control: "object",
+    },
+    mode: {
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "Hello" },
+      },
+    },
+  },
+  render: function Render({ onSelect, ...args }, ctx) {
+    const [{ selected }, setArgs] = useArgs<typeof ctx.args>();
+
+    const handleSelect = (value?: DateRange) => {
+      // @ts-expect-error bad types
+      onSelect?.(value);
+      setArgs({ selected: value });
+    };
+
+    return <Calendar {...args} selected={selected} onSelect={handleSelect} />;
   },
 };

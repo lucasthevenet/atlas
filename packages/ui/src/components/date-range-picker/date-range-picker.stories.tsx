@@ -1,12 +1,13 @@
 import { useArgs } from "@storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/react";
+import { addDays } from "date-fns";
 
-import { DatePicker } from "./date-picker";
+import { DateRangePicker } from "./date-range-picker";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Components/DatePicker",
-  component: DatePicker,
+  title: "Components/DateRangePicker",
+  component: DateRangePicker,
   render: function Render({ onChange, ...args }) {
     const [{ value }, updateArgs] = useArgs();
 
@@ -16,7 +17,7 @@ const meta = {
       updateArgs({ value });
     }
 
-    return <DatePicker {...args} onChange={handleChange} value={value} />;
+    return <DateRangePicker {...args} onChange={handleChange} value={value} />;
   },
   argTypes: {
     showOutsideDays: {
@@ -27,12 +28,8 @@ const meta = {
     onChange: {
       action: "onChange",
     },
-    value: {
-      control: "date",
-      defaultValue: new Date(),
-    },
   },
-} satisfies Meta<typeof DatePicker>;
+} satisfies Meta<typeof DateRangePicker>;
 
 export default meta;
 
@@ -42,6 +39,9 @@ type Story = StoryObj<typeof meta>;
 export const $default: Story = {
   name: "Example",
   args: {
-    value: new Date(),
+    value: {
+      from: new Date(),
+      to: addDays(new Date(), 7),
+    },
   },
 };
