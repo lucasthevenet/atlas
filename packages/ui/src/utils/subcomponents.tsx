@@ -4,6 +4,36 @@ import { type Args, type ArgTypes, type Meta } from "@storybook/react";
 
 type InputType = ArgTypes[keyof ArgTypes];
 
+export type AppendToObjectKeys<T extends object, S extends string> = {
+  [K in keyof T as `${S}.${K & string}`]: T[K];
+};
+
+export type RemoveFromObjectKeys<T extends object, S extends string> = {
+  [K in keyof T as K extends `${S}.${infer R}` ? R : K]: T[K];
+};
+
+export const appendKey = <T extends object, S extends string>(
+  key: S,
+  obj?: T,
+): AppendToObjectKeys<T, S> => {
+  const result = {} as AppendToObjectKeys<T, S>;
+  for (const k in obj) {
+    result[`${key}.${k}` as keyof AppendToObjectKeys<T, S>] = obj[
+      k
+    ] as AppendToObjectKeys<T, S>[keyof AppendToObjectKeys<T, S>];
+  }
+  return result;
+};
+
+export type SubComponentMeta<T extends string, TComponent extends React.FC> = {
+  title: T;
+  component: TComponent;
+  args?: React.ComponentProps<TComponent>;
+  argTypes?: {
+    [key in keyof React.PropsWithoutRef<TComponent>]: InputType;
+  };
+};
+
 export function createSubComponentStory<T extends Args>(component: Meta<T>) {
   const argTypes = Object.keys(component.argTypes ?? {}).reduce((acc, key) => {
     const argType = component.argTypes?.[key] as InputType;

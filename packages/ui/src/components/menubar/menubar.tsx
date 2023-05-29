@@ -23,7 +23,7 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex h-10 items-center space-x-1 rounded-md border bg-white p-1 dark:bg-gray-950",
+      "flex h-10 items-center space-x-1 rounded-md border border-gray-200 dark:border-gray-800 bg-white p-1 dark:bg-gray-950",
       className,
     )}
     {...props}
@@ -38,7 +38,7 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded px-3 py-1.5 text-sm font-medium outline-none focus:bg-gray-100 focus:text-gray-900 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[state=open]:bg-gray-800 dark:data-[state=open]:text-gray-50",
+      "flex cursor-default text-gray-900 dark:text-gray-200 select-none items-center rounded px-3 py-1.5 text-sm font-medium outline-none focus:bg-gray-100 focus:text-gray-900 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[state=open]:bg-gray-800 dark:data-[state=open]:text-gray-50",
       className,
     )}
     {...props}
@@ -74,7 +74,7 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-white p-1 text-gray-900 shadow-md animate-in data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1 dark:bg-gray-950 dark:text-gray-400",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 dark:border-gray-800 bg-white p-1 text-gray-900 shadow-md animate-in data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1 dark:bg-gray-950 dark:text-gray-400",
       className,
     )}
     {...props}
@@ -97,7 +97,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 text-gray-900 shadow-md animate-in slide-in-from-top-1 dark:bg-gray-950 dark:text-gray-400",
+          "z-50 min-w-[12rem] overflow-hidden rounded-md border border-gray-200 dark:border-gray-800 bg-white p-1 text-gray-900 shadow-md animate-in slide-in-from-top-1 dark:bg-gray-950 dark:text-gray-400",
           className,
         )}
         {...props}

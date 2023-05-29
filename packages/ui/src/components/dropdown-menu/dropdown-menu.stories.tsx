@@ -244,7 +244,7 @@ const checkboxItem = createSubComponentStory({
 
 export const withForm: Story = {
   name: "With Checkbox",
-  //@ts-expect-error idk
+  // @ts-expect-error fix later
   args: {
     ...checkboxItem.args,
   },

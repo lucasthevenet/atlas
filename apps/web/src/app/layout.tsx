@@ -1,4 +1,5 @@
 import "~/styles/globals.css";
+
 import { getServerSession } from "next-auth";
 
 import { fontSans } from "~/styles/fonts";
