@@ -4,7 +4,7 @@ import DiscordProvider from "next-auth/providers/discord";
 import { accounts, db, sessions, users, verificationTokens } from "@acme/db";
 
 import { env } from "../env.mjs";
-import { DrizzleAdapter } from "./adapter/adapter";
+import { DrizzleAdapter } from "./adapter";
 
 /**
  * Module augmentation for `next-auth` types

@@ -3,22 +3,22 @@ import {
   type PgTableWithColumns,
   type PgText,
   type PgTimestamp,
+  type PgUUID,
 } from "drizzle-orm/pg-core";
 import { type PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { type AdapterAccount } from "next-auth/adapters";
 
-type Users = PgTableWithColumns<{
+type UsersTable = PgTableWithColumns<{
   name: "users";
   schema: undefined;
   columns: {
-    id: PgText<{
+    id: PgUUID<{
       tableName: "users";
-      enumValues: [string, ...string[]];
       name: "id";
       data: string;
       driverParam: string;
-      hasDefault: false;
       notNull: true;
+      hasDefault: true;
     }>;
     name: PgText<{
       tableName: "users";
@@ -58,7 +58,7 @@ type Users = PgTableWithColumns<{
   };
 }>;
 
-type Accounts = PgTableWithColumns<{
+type AccountsTable = PgTableWithColumns<{
   name: "accounts";
   schema: undefined;
   columns: {
@@ -163,7 +163,7 @@ type Accounts = PgTableWithColumns<{
   };
 }>;
 
-type Sessions = PgTableWithColumns<{
+type SessionsTable = PgTableWithColumns<{
   name: "sessions";
   schema: undefined;
   columns: {
@@ -196,7 +196,7 @@ type Sessions = PgTableWithColumns<{
   };
 }>;
 
-type VerificationToken = PgTableWithColumns<{
+type VerificationTokenTable = PgTableWithColumns<{
   name: "verificationToken";
   schema: undefined;
   columns: {
@@ -230,10 +230,10 @@ type VerificationToken = PgTableWithColumns<{
 }>;
 
 export type AuthSchema = {
-  users: Users;
-  accounts: Accounts;
-  sessions: Sessions;
-  verificationTokens: VerificationToken;
+  users: UsersTable;
+  accounts: AccountsTable;
+  sessions: SessionsTable;
+  verificationTokens: VerificationTokenTable;
 };
 
 export type DbClient<T extends AuthSchema = AuthSchema> = PostgresJsDatabase<T>;

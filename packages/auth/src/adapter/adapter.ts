@@ -13,7 +13,7 @@ export function DrizzleAdapter(
     createUser: async (data) => {
       return client
         .insert(users)
-        .values({ ...data, id: crypto.randomUUID() })
+        .values(data)
         .onConflictDoNothing()
         .returning()
         .then((res) => res[0]!);
